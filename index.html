@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma para emprendedores cubanos - Publica y promociona tus productos y servicios">
+    <link rel="icon" type="image/png" sizes="50x50" href="logo.png">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <meta name="theme-color" content="#ffffff">
+    <title>Tcubita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particlesCanvas"></canvas>
+    
+    <div class="container holographic-effect">
+        <!-- Logo CBO -->
+            <img src="logo.png" alt="CBO" width="50" height="50" loading="eager">
+        </div>
+    <header class="holographic-card" role="banner">
+        <div class="container">
+            <h1 class="logo animate-fade">Tcubita</h1>
+            <p class="tagline animate-fade delay-1">Donde los emprendedores cubanos conectan con oportunidades</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero holographic-card animate-fade delay-1" aria-labelledby="hero-heading">
+            <div class="container">
+                <h2 id="hero-heading">Publica y promociona lo que ofreces</h2>
+                <p>En Tcubita puedes dar a conocer cualquier tipo de artículo o servicio, siempre que sea ofrecido con claridad y honestidad.</p>
+                
+                <a href="#download" class="btn download-btn animate-fade delay-2" aria-label="Descargar la aplicación">
+                    <span class="android-icon" aria-hidden="true"></span>
+                    Descarga la App
+                </a>
+            </div>
+        </section>
+        
+        <section class="container" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="sr-only">Características principales</h2>
+            <div class="features">
+                <article class="feature-box holographic-card animate-fade">
+                    <h3>Publica fácilmente</h3>
+                    <p>Sube los detalles de lo que ofreces con descripciones claras y fotos de calidad. La transparencia es clave.</p>
+                </article>
+                
+                <article class="feature-box holographic-card animate-fade delay-1">
+                    <h3>Llega a más personas</h3>
+                    <p>Promociona tus productos o servicios entre una comunidad de cubanos interesados en opciones confiables.</p>
+                </article>
+                
+                <article class="feature-box holographic-card animate-fade delay-2">
+                    <h3>Sin engaños</h3>
+                    <p>Tcubita valora la honestidad. Todos los anuncios deben reflejar exactamente lo que se ofrece, sin estafas ni información falsa.</p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="cta holographic-card" id="download" aria-labelledby="cta-heading">
+            <div class="container">
+                <h2 id="cta-heading" class="animate-fade">Únete a la comunidad de emprendedores cubanos</h2>
+                <p class="animate-fade delay-1">Tcubita es el espacio ideal para quienes buscan oportunidades genuinas de negocio.</p>
+                
+                <div class="animate-fade delay-2">
+                    <button id="downloadBtn" class="btn download-btn">
+                        <span class="android-icon" aria-hidden="true"></span>
+                        Descarga para Android
+                    </button>
+                    <p class="availability-text">Disponible pronto en la tienda de aplicaciones</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading" class="animate-fade">Lo que dicen nuestros usuarios</h2>
+                <div class="features">
+                    <article class="feature-box holographic-card animate-fade">
+                        <blockquote>
+                            <p>"Gracias a Tcubita pude dar a conocer mi taller de reparaciones y conseguir más clientes."</p>
+                            <footer><strong>- Carlos, Matanzas</strong></footer>
+                        </blockquote>
+                    </article>
+                    
+                    <article class="feature-box holographic-card animate-fade delay-1">
+                        <blockquote>
+                            <p>"Vendo productos de belleza y aquí encontré una forma segura de promocionarme."</p>
+                            <footer><strong>- Laura, La Habana</strong></footer>
+                        </blockquote>
+                    </article>
+                    
+                    <article class="feature-box holographic-card animate-fade delay-2">
+                        <blockquote>
+                            <p>"Como artesano, Tcubita me ha ayudado a mostrar mi trabajo a más personas."</p>
+                            <footer><strong>- Miguel, Santiago de Cuba</strong></footer>
+                        </blockquote>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
