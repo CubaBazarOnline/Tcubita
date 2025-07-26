@@ -2,765 +2,185 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tcubita - Mercado Digital Cubano</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --accent: #10b981;
-            --dark: #1e293b;
-            --darker: #0f172a;
-            --light: #f8fafc;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --card-bg: rgba(255,255,255,0.03);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--darker);
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .hero-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.15) 0%, rgba(30, 41, 59, 0.95) 70%);
-            z-index: -1;
-        }
-
-        /* Header Styles */
-        header {
-            background: var(--gradient);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-            background: linear-gradient(to right, white, #e0e7ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.8rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.3);
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            color: var(--darker);
-            font-weight: 700;
-        }
-
-        .btn-accent:hover {
-            background: #0ea371;
-            transform: translateY(-2px);
-        }
-
-        /* Navigation */
-        nav {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: all 0.2s;
-            opacity: 0.9;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.2s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        /* Card Styles */
-        .card {
-            background: rgba(15, 23, 42, 0.7);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.12);
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature {
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 10px;
-            padding: 1.8rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.2s;
-        }
-
-        .feature:hover {
-            background: rgba(30, 41, 59, 0.7);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            display: inline-block;
-        }
-
-        /* Tools Container */
-        .tools-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .tool-card {
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tool-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.2), transparent);
-            z-index: -1;
-        }
-
-        .tcubita-pay {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.25));
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .valpay {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.25));
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        /* Download Links */
-        .download-links {
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .download-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .download-links a:hover {
-            background: rgba(16, 185, 129, 0.2);
-            color: white;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            background: var(--gradient);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 0.3rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial {
-            background: rgba(30, 41, 59, 0.7);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .author-info p {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin: 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .step {
-                flex-direction: column;
-            }
-
-            .download-links a {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        section {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        section:nth-child(2) { animation-delay: 0.1s; }
-        section:nth-child(3) { animation-delay: 0.2s; }
-        section:nth-child(4) { animation-delay: 0.3s; }
-        section:nth-child(5) { animation-delay: 0.4s; }
-
-        /* Performance Optimizations */
-        .will-change {
-            will-change: transform, opacity;
-        }
-
-        /* Offline Support */
-        .offline-message {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ef4444;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    <style>:root{--primary:#2563eb;--secondary:#7c3aed;--accent:#10b981;--dark:#1e293b;--darker:#0f172a;--light:#f8fafc;--gradient:linear-gradient(135deg,var(--primary),var(--secondary));--card-bg:rgba(255,255,255,0.03)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background-color:var(--darker);color:var(--light);line-height:1.6;overflow-x:hidden}.hero-gradient{position:fixed;top:0;left:0;width:100%;height:100vh;background:radial-gradient(circle at 30% 50%,rgba(37,99,235,0.15)0%,rgba(30,41,59,0.95)70%);z-index:-1}header{background:var(--gradient);color:white;padding:2rem 0;text-align:center;position:relative;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.3)}.header-content{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:2}.logo{font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;display:inline-block;background:linear-gradient(to right,white,#e0e7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.tagline{font-size:1.1rem;max-width:700px;margin:0 auto;opacity:0.9}.cta-buttons{margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;transition:all 0.2s ease;text-align:center;border:none;cursor:pointer}.btn-primary{background:var(--gradient);color:white;box-shadow:0 4px 15px rgba(37,99,235,0.4)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.5)}.btn-outline{background:transparent;color:white;border:2px solid rgba(255,255,255,0.2)}.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)}.btn-accent{background:var(--accent);color:var(--darker);font-weight:700}.btn-accent:hover{background:#0ea371;transform:translateY(-2px)}nav{background-color:rgba(15,23,42,0.95);backdrop-filter:blur(10px);padding:1rem 0;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.05)}.nav-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}.nav-links{display:flex;gap:1.5rem;list-style:none}.nav-links a{color:white;text-decoration:none;font-weight:500;font-size:0.95rem;padding:0.5rem 0;position:relative;transition:all 0.2s;opacity:0.9}.nav-links a:hover{opacity:1}.nav-links a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.2s}.nav-links a:hover::after{width:100%}.container{max-width:1200px;margin:3rem auto;padding:0 2rem}section{margin-bottom:4rem;scroll-margin-top:80px}h2{font-size:2rem;margin-bottom:1.5rem;color:white;position:relative;display:inline-block}h2::after{content:"";position:absolute;bottom:-8px;left:0;width:60px;height:4px;background:var(--accent);border-radius:2px}h3{font-size:1.4rem;margin-bottom:1rem;color:white}p{margin-bottom:1rem;opacity:0.9;line-height:1.7}.card{background:rgba(15,23,42,0.7);border-radius:12px;padding:2rem;margin-bottom:2rem;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.2);transition:transform 0.2s,box-shadow 0.2s}.card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.3);border-color:rgba(255,255,255,0.12)}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}.feature{background:rgba(30,41,59,0.5);border-radius:10px;padding:1.8rem;text-align:center;border:1px solid rgba(255,255,255,0.05);transition:all 0.2s}.feature:hover{background:rgba(30,41,59,0.7);transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.2)}.feature-icon{font-size:2.5rem;margin-bottom:1.5rem;color:var(--accent);display:inline-block}.tools-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin:3rem 0}.tool-card{border-radius:12px;padding:2rem;position:relative;overflow:hidden;transition:all 0.2s}.tool-card:hover{transform:translateY(-5px)}.tool-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(0,0,0,0.2),transparent);z-index:-1}.tcubita-pay{background:linear-gradient(135deg,rgba(37,99,235,0.15),rgba(37,99,235,0.25));border:1px solid rgba(37,99,235,0.2)}.valpay{background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.25));border:1px solid rgba(16,185,129,0.2)}.download-links{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem}.download-links a{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent);text-decoration:none;font-weight:500;transition:all 0.2s;padding:0.8rem 1.5rem;border-radius:8px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}.download-links a:hover{background:rgba(16,185,129,0.2);color:white}.how-it-works{display:flex;flex-direction:column;gap:2rem;margin-top:3rem}.step{display:flex;gap:1.5rem;align-items:flex-start}.step-number{background:var(--gradient);color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;margin-top:0.3rem}.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}.testimonial{background:rgba(30,41,59,0.7);padding:1.5rem;border-radius:8px;border-left:3px solid var(--accent)}.testimonial-author{display:flex;align-items:center;gap:0.8rem;margin-top:1rem}.author-avatar{width:40px;height:40px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold}.author-info h4{font-size:0.95rem;margin-bottom:0.2rem}.author-info p{font-size:0.8rem;opacity:0.7;margin:0}@media (max-width:768px){.nav-container{flex-direction:column;gap:1rem}.nav-links{flex-wrap:wrap;justify-content:center}.step{flex-direction:column}.download-links a{width:100%;justify-content:center}}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}section{animation:fadeIn 0.6s ease-out forwards}section:nth-child(2){animation-delay:0.1s}section:nth-child(3){animation-delay:0.2s}section:nth-child(4){animation-delay:0.3s}section:nth-child(5){animation-delay:0.4s}.will-change{will-change:transform,opacity}.offline-message{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#ef4444;color:white;padding:10px 20px;border-radius:5px;z-index:1000;box-shadow:0 4px 6px rgba(0,0,0,0.1)}</style>
 </head>
 <body>
-    <div class="hero-gradient"></div>
-    <div class="offline-message">Estás navegando sin conexión. Algunas funciones pueden estar limitadas.</div>
-    
-    <header>
-        <div class="header-content">
-            <div class="logo">Tcubita 2025</div>
-            <p class="tagline">La plataforma digital que conecta contigo</p>
-            <div class="cta-buttons">
-                <a href="#descargas" class="btn btn-primary">Descargar Ahora</a>
-                <a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
-            </div>
-        </div>
-    </header>
-    
-    <nav>
-        <div class="nav-container">
-            <div class="logo" style="font-size: 1.5rem;">Tcubita Free</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#beneficios">Beneficios</a></li>
-                <li><a href="#herramientas">Herramientas</a></li>
-                <li><a href="#como-funciona">Cómo funciona</a></li>
-                <li><a href="#descargas">Descargas</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <main class="container">
-        <!-- Inicio Section - Independent Component -->
-        <section id="inicio" class="card">
-            <h2>El mercado digital Cubano de hoy en dia</h2>
-            <p>Tcubita Free es la plataforma líder para comprar y vender productos en Cuba. Conectamos a vendedores y compradores de toda la isla en un espacio seguro, fácil de usar y diseñado específicamente para las necesidades del mercado cubano.</p>
-            <p>Ya seas un emprendedor, un pequeño negocio o simplemente buscas algo especial, Tcubita te ofrece las herramientas para hacerlo realidad.</p>
-            <div class="cta-buttons">
-                <a href="#descargas" class="btn btn-accent">Empezar ahora</a>
-                <a href="#beneficios" class="btn btn-outline">Ver beneficios</a>
-            </div>
-        </section>
-        
-        <!-- Beneficios Section - Independent Component -->
-        <section id="beneficios">
-            <h2>¿Por qué elegir Tcubita Free?</h2>
-            <p>La plataforma está basada en las necesidades específicas de los cubanos, día a día cientos de cubanos emprendedores sufren la asistencia digital debido a que no todo es gratuito:</p>
-            
-            <div class="features-grid">
-                <div class="feature will-change">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Rápido y accesible</h3>
-                    <p>Funciona incluso con conexiones lentas en cuba.</p>
-                </div>
-                
-                <div class="feature will-change">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Seguridad primero</h3>
-                    <p>Sistema de verificación de usuarios por email.</p>
-                </div>
-                
-                <div class="feature will-change">
-                    <div class="feature-icon">💼</div>
-                    <h3>Para todos</h3>
-                    <p>Desde vendedores ocasionales hasta negocios establecidos, todos tienen espacio aquí.</p>
-                </div>
-                
-                <div class="feature will-change">
-                    <div class="feature-icon">📱</div>
-                    <h3>Diseño intuitivo</h3>
-                    <p>Hecho para que cualquier cubano pueda utilizarlo sin perderse.</p>
-                </div>
-                
-                <div class="feature will-change">
-                    <div class="feature-icon">💰</div>
-                    <h3>Libre</h3>
-                    <p>Publica tus productos gratis, sin limites.</p>
-                </div>
-                
-                <div class="feature will-change">
-                    <div class="feature-icon">📢</div>
-                    <h3>Alcance internacional</h3>
-                    <p>Tus articulos se ven dentro y fuera del pais.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Herramientas Section - Independent Component -->
-        <section id="herramientas">
-            <h2>Herramientas Premium</h2>
-            <p>potenciate con estas soluciones especializadas para crecer:</p>
-            
-            <div class="tools-container">
-                <div class="tool-card tcubita-pay will-change">
-                    <h3>Tcubita Pay</h3>
-                    <p>La solución completa para negocios que quieren llevar sus ventas al siguiente nivel de manera más directa, sin utilizar la versión gratuita.</p>
-                    <ul style="margin: 1.5rem 0; list-style-type: none;">
-                        <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✔️</span> <span>Anuncios destacados</span>
-                        </li>
-                        <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✔️</span> <span>Sistema de solicitud de productos</span>
-                        </li>
-                        <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✔️</span> <span>Estadísticas detalladas de cada producto</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✔️</span> <span>Plataforma siempre disponible</span>
-                        </li>
-                    </ul>
-                    <div class="cta-buttons">
-                        <a href="https://apk.e-droid.net/apk/app3614062-7yz9mh.apk?v=2" class="btn btn-accent">Descargar Tcubita Pay</a>
-                    </div>
-                </div>
-                
-                <div class="tool-card valpay will-change">
-                    <h3>ValPay Analytics</h3>
-                    <p>La  herramienta web que necesitaspara solicitar la publicación de tu producto en Tcubita Pay.</p>
-                    <ul style="margin: 1.5rem 0; list-style-type: none;">
-                        <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✅️</span> <span>Fácil de utilizar</span>
-                        </li>
-                        <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span>✅️</span> <span>Múltiples opciones para de producto</span>
-                        </li>
-                    </ul>
-                    <div class="cta-buttons">
-                        <a href="https://cubabazaronline.github.io/ValPay/" class="btn btn-accent">Probar ValPay</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Como Funciona Section - Independent Component -->
-        <section id="como-funciona">
-            <h2>¿Cómo funciona Tcubita?</h2>
-            <p>En solo 3 sencillos pasos puedes empezar a comprar o vender en la plataforma:</p>
-            
-            <div class="how-it-works">
-                <div class="step will-change">
-                    <div class="step-number">1</div>
-                    <div>
-                        <h3>Descarga la aplicación</h3>
-                        <p>Obtén Tcubita desde nuestro sitio web o a través de los enlaces de descarga. Es compatible con la mayoría de dispositivos Android.</p>
-                    </div>
-                </div>
-                
-                <div class="step will-change">
-                    <div class="step-number">2</div>
-                    <div>
-                        <h3>Crea tu perfil</h3>
-                        <p>Regístrate en minutos con información básica. verifica tu identidad por Email.</p>
-                    </div>
-                </div>
-                
-                <div class="step will-change">
-                    <div class="step-number">3</div>
-                    <div>
-                        <h3>¡Empieza a comprar o vender!</h3>
-                        <p>Publica tus productos con fotos y descripción, o explora los anuncios para encontrar lo que el mercado ofrece.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 3rem;">
-                <h3>Lo que dicen nuestros usuarios</h3>
-                <div class="testimonials">
-                    <div class="testimonial will-change">
-                        <p>Gracias a esto pude montar mi pequeña mipyme. y En 3 meses ya tengo clientes fijos en toda La Habana.</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">M</div>
-                            <div class="author-info">
-                                <h4>María L.</h4>
-                                <p>Vendedora, La Habana</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial will-change">
-                        <p>Como comprador, me encanta la variedad de productos y la facilidad para contactar directamente con los vendedores.</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">C</div>
-                            <div class="author-info">
-                                <h4>Carlos R.</h4>
-                                <p>Comprador, Santiago de Cuba</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial will-change">
-                        <p>La app de Tcubita Pay, hizo todo el trabajo por mí.</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">A</div>
-                            <div class="author-info">
-                                <h4>Ana G.</h4>
-                                <p>Gestora de ventas, Camagüey</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Descargas Section - Independent Component -->
-        <section id="descargas" class="card">
-            <h2>Descarga Tcubita hoy mismo</h2>
-            <p>Disponible para dispositivos Android. Selecciona la versión que mejor se adapte a tus necesidades:</p>
-            
-            <div class="download-links">
-                <a href="https://apk.e-droid.net/apk/app3494684-t8z7op.apk?v=10" class="will-change">
-                    <span>⬇️</span> Tcubita Básico (Gratis)
-                </a>
-                <a href="https://apk.e-droid.net/apk/app3614062-7yz9mh.apk?v=2" class="will-change">
-                    <span>💎</span> Tcubita Pay (Premium)
-                </a>
-                <a href="https://cubabazaronline.github.io/ValPay/" class="will-change">
-                    <span>📊</span> ValPay Analytics
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Offline detection
-        window.addEventListener('load', function() {
-            function updateOnlineStatus() {
-                const offlineMessage = document.querySelector('.offline-message');
-                if (!navigator.onLine) {
-                    offlineMessage.style.display = 'block';
-                } else {
-                    offlineMessage.style.display = 'none';
-                }
-            }
-
-            window.addEventListener('online', updateOnlineStatus);
-            window.addEventListener('offline', updateOnlineStatus);
-            updateOnlineStatus();
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Lazy loading for future implementation
-        document.addEventListener('DOMContentLoaded', function() {
-            if ('IntersectionObserver' in window) {
-                const lazyElements = document.querySelectorAll('.lazy');
-                
-                const lazyObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const lazyElement = entry.target;
-                            // Implement lazy loading logic here
-                            lazyObserver.unobserve(lazyElement);
-                        }
-                    });
-                });
-
-                lazyElements.forEach(function(lazyElement) {
-                    lazyObserver.observe(lazyElement);
-                });
-            }
-        });
-
-        // Performance optimization - reduce layout thrashing
-        let timeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(timeout);
-            timeout = setTimeout(function() {
-                // Handle resize events here
-            }, 100);
-        });
-    </script>
+<div class="hero-gradient"></div>
+<div class="offline-message">Estás navegando sin conexión. Algunas funciones pueden estar limitadas.</div>
+<header>
+<div class="header-content">
+<div class="logo">Tcubita 2025</div>
+<p class="tagline">La plataforma digital que conecta contigo</p>
+<div class="cta-buttons">
+<a href="#descargas" class="btn btn-primary">Descargar Ahora</a>
+<a href="#como-funciona" class="btn btn-outline">Cómo funciona</a>
+</div>
+</div>
+</header>
+<nav>
+<div class="nav-container">
+<div class="logo" style="font-size:1.5rem">Tcubita Free</div>
+<ul class="nav-links">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#beneficios">Beneficios</a></li>
+<li><a href="#herramientas">Herramientas</a></li>
+<li><a href="#como-funciona">Cómo funciona</a></li>
+<li><a href="#descargas">Descargas</a></li>
+</ul>
+</div>
+</nav>
+<main class="container">
+<section id="inicio" class="card">
+<h2>El mercado digital Cubano de hoy en dia</h2>
+<p>Tcubita Free es la plataforma líder para comprar y vender productos en Cuba. Conectamos a vendedores y compradores de toda la isla en un espacio seguro, fácil de usar y diseñado específicamente para las necesidades del mercado cubano.</p>
+<p>Ya seas un emprendedor, un pequeño negocio o simplemente buscas algo especial, Tcubita te ofrece las herramientas para hacerlo realidad.</p>
+<div class="cta-buttons">
+<a href="#descargas" class="btn btn-accent">Empezar ahora</a>
+<a href="#beneficios" class="btn btn-outline">Ver beneficios</a>
+</div>
+</section>
+<section id="beneficios">
+<h2>¿Por qué elegir Tcubita Free?</h2>
+<p>La plataforma está basada en las necesidades específicas de los cubanos, día a día cientos de cubanos emprendedores sufren la asistencia digital debido a que no todo es gratuito:</p>
+<div class="features-grid">
+<div class="feature will-change">
+<div class="feature-icon">🚀</div>
+<h3>Rápido y accesible</h3>
+<p>Funciona incluso con conexiones lentas en cuba.</p>
+</div>
+<div class="feature will-change">
+<div class="feature-icon">🛡️</div>
+<h3>Seguridad primero</h3>
+<p>Sistema de verificación de usuarios por email.</p>
+</div>
+<div class="feature will-change">
+<div class="feature-icon">💼</div>
+<h3>Para todos</h3>
+<p>Desde vendedores ocasionales hasta negocios establecidos, todos tienen espacio aquí.</p>
+</div>
+<div class="feature will-change">
+<div class="feature-icon">📱</div>
+<h3>Diseño intuitivo</h3>
+<p>Hecho para que cualquier cubano pueda utilizarlo sin perderse.</p>
+</div>
+<div class="feature will-change">
+<div class="feature-icon">💰</div>
+<h3>Libre</h3>
+<p>Publica tus productos gratis, sin limites.</p>
+</div>
+<div class="feature will-change">
+<div class="feature-icon">📢</div>
+<h3>Alcance internacional</h3>
+<p>Tus articulos se ven dentro y fuera del pais.</p>
+</div>
+</div>
+</section>
+<section id="herramientas">
+<h2>Herramientas Premium</h2>
+<p>potenciate con estas soluciones especializadas para crecer:</p>
+<div class="tools-container">
+<div class="tool-card tcubita-pay will-change">
+<h3>Tcubita Pay</h3>
+<p>La solución completa para negocios que quieren llevar sus ventas al siguiente nivel de manera más directa, sin utilizar la versión gratuita.</p>
+<ul style="margin:1.5rem 0;list-style-type:none">
+<li style="margin-bottom:0.8rem;display:flex;align-items:flex-start;gap:0.5rem"><span>✔️</span><span>Anuncios destacados</span></li>
+<li style="margin-bottom:0.8rem;display:flex;align-items:flex-start;gap:0.5rem"><span>✔️</span><span>Sistema de solicitud de productos</span></li>
+<li style="margin-bottom:0.8rem;display:flex;align-items:flex-start;gap:0.5rem"><span>✔️</span><span>Estadísticas detalladas de cada producto</span></li>
+<li style="display:flex;align-items:flex-start;gap:0.5rem"><span>✔️</span><span>Plataforma siempre disponible</span></li>
+</ul>
+<div class="cta-buttons">
+<a href="https://apk.e-droid.net/apk/app3614062-7yz9mh.apk?v=2" class="btn btn-accent">Descargar Tcubita Pay</a>
+</div>
+</div>
+<div class="tool-card valpay will-change">
+<h3>ValPay Analytics</h3>
+<p>La herramienta web que necesitaspara solicitar la publicación de tu producto en Tcubita Pay.</p>
+<ul style="margin:1.5rem 0;list-style-type:none">
+<li style="margin-bottom:0.8rem;display:flex;align-items:flex-start;gap:0.5rem"><span>✅️</span><span>Fácil de utilizar</span></li>
+<li style="margin-bottom:0.8rem;display:flex;align-items:flex-start;gap:0.5rem"><span>✅️</span><span>Múltiples opciones para de producto</span></li>
+</ul>
+<div class="cta-buttons">
+<a href="https://cubabazaronline.github.io/ValPay/" class="btn btn-accent">Probar ValPay</a>
+</div>
+</div>
+</div>
+</section>
+<section id="como-funciona">
+<h2>¿Cómo funciona Tcubita?</h2>
+<p>En solo 3 sencillos pasos puedes empezar a comprar o vender en la plataforma:</p>
+<div class="how-it-works">
+<div class="step will-change">
+<div class="step-number">1</div>
+<div>
+<h3>Descarga la aplicación</h3>
+<p>Obtén Tcubita desde nuestro sitio web o a través de los enlaces de descarga. Es compatible con la mayoría de dispositivos Android.</p>
+</div>
+</div>
+<div class="step will-change">
+<div class="step-number">2</div>
+<div>
+<h3>Crea tu perfil</h3>
+<p>Regístrate en minutos con información básica. verifica tu identidad por Email.</p>
+</div>
+</div>
+<div class="step will-change">
+<div class="step-number">3</div>
+<div>
+<h3>¡Empieza a comprar o vender!</h3>
+<p>Publica tus productos con fotos y descripción, o explora los anuncios para encontrar lo que el mercado ofrece.</p>
+</div>
+</div>
+</div>
+<div style="margin-top:3rem">
+<h3>Lo que dicen nuestros usuarios</h3>
+<div class="testimonials">
+<div class="testimonial will-change">
+<p>Gracias a esto pude montar mi pequeña mipyme. y En 3 meses ya tengo clientes fijos en toda La Habana.</p>
+<div class="testimonial-author">
+<div class="author-avatar">M</div>
+<div class="author-info">
+<h4>María L.</h4>
+<p>Vendedora, La Habana</p>
+</div>
+</div>
+</div>
+<div class="testimonial will-change">
+<p>Como comprador, me encanta la variedad de productos y la facilidad para contactar directamente con los vendedores.</p>
+<div class="testimonial-author">
+<div class="author-avatar">C</div>
+<div class="author-info">
+<h4>Carlos R.</h4>
+<p>Comprador, Santiago de Cuba</p>
+</div>
+</div>
+</div>
+<div class="testimonial will-change">
+<p>La app de Tcubita Pay, hizo todo el trabajo por mí.</p>
+<div class="testimonial-author">
+<div class="author-avatar">A</div>
+<div class="author-info">
+<h4>Ana G.</h4>
+<p>Gestora de ventas, Camagüey</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="descargas" class="card">
+<h2>Descarga Tcubita hoy mismo</h2>
+<p>Disponible para dispositivos Android. Selecciona la versión que mejor se adapte a tus necesidades:</p>
+<div class="download-links">
+<a href="https://apk.e-droid.net/apk/app3494684-t8z7op.apk?v=10" class="will-change"><span>⬇️</span> Tcubita Básico (Gratis)</a>
+<a href="https://apk.e-droid.net/apk/app3614062-7yz9mh.apk?v=2" class="will-change"><span>💎</span> Tcubita Pay (Premium)</a>
+<a href="https://cubabazaronline.github.io/ValPay/" class="will-change"><span>📊</span> ValPay Analytics</a>
+</div>
+</section>
+</main>
+<script>window.addEventListener('load',function(){function updateOnlineStatus(){const e=document.querySelector('.offline-message');navigator.onLine?e.style.display='none':e.style.display='block'}window.addEventListener('online',updateOnlineStatus),window.addEventListener('offline',updateOnlineStatus),updateOnlineStatus()}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener('click',function(e){e.preventDefault();const t=this.getAttribute('href'),n=document.querySelector(t);n&&n.scrollIntoView({behavior:'smooth',block:'start'})})</script>
 </body>
 </html>
